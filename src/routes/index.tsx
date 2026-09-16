@@ -10,12 +10,11 @@ import courseDiplomaYoga from "@/assets/course-diploma-yoga.webp";
 import courseDiplomaFoundations from "@/assets/course-diploma-foundations.webp";
 import courseMeditation from "@/assets/course-meditation.webp";
 import courseYogaKids from "@/assets/course-yoga-kids.webp";
-import newsYogaMeet from "@/assets/news-yoga-meet.webp";
-import newsYogaDay from "@/assets/news-yoga-day.webp";
-import newsAccreditation from "@/assets/news-accreditation.webp";
-import newsTopFive from "@/assets/news-top-five.webp";
-import newsAward from "@/assets/news-award.webp";
-import newsDirectory from "@/assets/news-directory.webp";
+import newsYogaDayCelebration from "@/assets/news-yoga-day-celebration.webp";
+import newsTopFiveGuwahati from "@/assets/news-top-five-guwahati.webp";
+import newsNationalYogaSports from "@/assets/news-national-yoga-sports.webp";
+import newsNortheastCentre from "@/assets/news-northeast-centre.webp";
+import newsPremierCentre from "@/assets/news-premier-centre.webp";
 import { Button } from "@/components/ui/button";
 
 const heroWebm = "/yoga-hero.webm";
@@ -115,56 +114,47 @@ const reviews = [
 const news = [
   {
     source: "The Assam Tribune",
-    title: "National Yoga Sports Meet",
+    title: "Yoga Day celebration across Assam",
     description:
-      "Our 6-member team represented Assam at the national stage — featuring Chief Instructor Pallabi Saikia's national-level accolades and Senior Professional Syed Inamul Hussain receiving the prestigious “Yoga-Ratna” title.",
-    image: newsYogaMeet,
-    alt: "Illustration of a yoga athlete in a competition pose framed by laurel wreaths",
-    href: "https://assamtribune.com/national-yoga-sports-meet",
-  },
-  {
-    source: "The Assam Tribune",
-    title: "Enthusiastic participation in Yoga Day celebrations",
-    description:
-      "International Yoga Day celebrations in Guwahati, including a special session at the Gauhati Medical College Auditorium led by Pallabi Saikia, honoured as “Assam Yoga Samragyee” — Yoga Empress of Assam.",
-    image: newsYogaDay,
-    alt: "Illustration of a community yoga day celebration at sunrise led by an instructor",
+      "A visual look at International Yoga Day celebrations, community practice, and the people bringing yoga to more spaces in Assam.",
+    image: newsYogaDayCelebration,
+    alt: "Vintage poster celebrating International Yoga Day with yoga practitioners",
     href: "https://assamtribune.com/enthusiastic-participation-in-yoga-day-celebration",
   },
   {
-    source: "Government of Assam",
-    title: "Officially Registered & Recognised",
-    description:
-      "Accredited under the Registrar of Societies, Govt. of Assam, as a recognised health and yoga training organization — featured in local news and directory archives for our meets, workshops, and community health initiatives.",
-    image: newsAccreditation,
-    alt: "Illustration of a meditating figure beside a golden recognition seal",
-    href: "https://www.searchguwahati.com/",
-  },
-  {
     source: "Enigmatic Horizon",
-    title: "Top Five Yoga Centres in Guwahati",
+    title: "Top five yoga centres in Guwahati",
     description:
-      "Featured among the top five yoga centres in Guwahati, recognised for specialised instruction in Hatha Yoga, Power Yoga, Sports Yoga and Yogic Therapy under experienced leadership.",
-    image: newsTopFive,
-    alt: "Illustration of a yogi meditating at sunrise with the Guwahati skyline",
+      "A city guide highlighting established yoga and meditation spaces in Guwahati and the different ways they support everyday wellbeing.",
+    image: newsTopFiveGuwahati,
+    alt: "Vintage poster announcing the top five yoga centres in Guwahati",
     href: "https://enigmatichorizon.com/top-five-yoga-centres-in-guwahati",
   },
   {
-    source: "India's Most Prominent Fitness Awards",
-    title: "Most Innovative Yoga Health Club",
+    source: "The Assam Tribune",
+    title: "National Yoga Sports Meet",
     description:
-      "Awarded 'Most Innovative Yoga Health Club in Guwahati' at the 2018 industry awards, honouring our unique blend of athletic sports yoga and therapeutic practices.",
-    image: newsAward,
-    alt: "Illustration of a golden trophy with a meditating yogi figure and laurel wreath",
-    href: "https://www.google.com/search?q=India%27s+Most+Prominent+Fitness+Awards+2018+Guwahati+yoga",
+      "Our team represented Assam at the national stage, celebrating sports yoga, discipline, and the growing strength of the local yoga community.",
+    image: newsNationalYogaSports,
+    alt: "Vintage poster for the Assam Tribune National Yoga Sports Meet",
+    href: "https://assamtribune.com/national-yoga-sports-meet",
   },
   {
     source: "SearchGuwahati",
-    title: "Premier Yoga & Meditation Centre",
+    title: "Northeast yoga and meditation centre",
     description:
-      "Listed as a premier centre in Guwahati's featured yoga and meditation archive, highlighting Pallabi Saikia's designation as Assam Yoga Samraggi.",
-    image: newsDirectory,
-    alt: "Illustration of a meditating figure with Guwahati cityscape and river at sunset",
+      "A local feature on the centre’s work, its meditation community, and the culture of mindful practice growing across Northeast India.",
+    image: newsNortheastCentre,
+    alt: "Vintage poster for the Northeast Yoga Meditation Centre",
+    href: "https://www.searchguwahati.com/yoga-meditation-centre-in-guwahati/",
+  },
+  {
+    source: "SearchGuwahati",
+    title: "Premier yoga and meditation centre",
+    description:
+      "A featured archive entry for the centre, sharing its approach to yoga education, meditation, and accessible wellness in Guwahati.",
+    image: newsPremierCentre,
+    alt: "Vintage poster for a premier yoga meditation centre in Guwahati",
     href: "https://www.searchguwahati.com/yoga-meditation-centre-in-guwahati/",
   },
 ];
@@ -441,33 +431,41 @@ export function Index() {
             </h2>
           </div>
 
-          <div className="courses-scroll -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-5 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            {news.map((article) => (
+          <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+            {news.map((article, index) => (
               <a
                 key={article.title}
                 href={article.href}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="course-card group w-[min(78vw,18rem)] shrink-0 snap-start overflow-hidden rounded-[1.25rem] bg-courses-card shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-[18.5rem]"
+                className={`course-card group overflow-hidden rounded-[1.25rem] bg-courses-card shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                  index === 0 ? "lg:row-span-2" : ""
+                }`}
               >
                 <img
                   src={article.image}
                   alt={article.alt}
-                  className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  width={1024}
-                  height={1024}
-                  sizes="(min-width: 640px) 296px, 78vw"
-                  loading="lazy"
+                  className={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] ${
+                    index === 0 ? "aspect-[4/3]" : "aspect-[4/2.3]"
+                  }`}
+                  width={1000}
+                  height={750}
+                  sizes={index === 0 ? "(min-width: 1024px) 55vw, 100vw" : "(min-width: 1024px) 40vw, 100vw"}
+                  loading={index === 0 ? "eager" : "lazy"}
                   decoding="async"
                 />
-                <div className="flex flex-col p-5">
+                <div className={`flex flex-col ${index === 0 ? "p-6 sm:p-8" : "p-5 sm:p-6"}`}>
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-courses-accent">
                     {article.source}
                   </p>
-                  <h3 className="mt-2 font-serif text-xl text-courses-heading">{article.title}</h3>
-                  <p className="mt-2 line-clamp-4 text-sm leading-6 text-courses-body">{article.description}</p>
+                  <h3 className={`${index === 0 ? "mt-3 text-2xl sm:text-3xl" : "mt-2 text-xl"} font-serif text-courses-heading`}>
+                    {article.title}
+                  </h3>
+                  <p className={`${index === 0 ? "mt-3 sm:text-base" : "mt-2"} line-clamp-4 text-sm leading-6 text-courses-body`}>
+                    {article.description}
+                  </p>
                   <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-courses-link">
-                    Read More <ArrowUpRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    Read article <ArrowUpRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
               </a>
