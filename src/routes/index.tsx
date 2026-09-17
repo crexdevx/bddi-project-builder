@@ -433,68 +433,40 @@ export function Index() {
             </h2>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-            {news.slice(0, 1).map((article) => (
-              <a
-                key={article.title}
-                href={article.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="course-card group overflow-hidden rounded-[1.25rem] bg-courses-card shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <img
-                  src={article.image}
-                  alt={article.alt}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  width={1000}
-                  height={750}
-                  sizes="(min-width: 1024px) 55vw, 100vw"
-                  loading="eager"
-                  decoding="async"
-                />
-                <div className="flex flex-col p-6 sm:p-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-courses-accent">
-                    {article.source}
-                  </p>
-                  <h3 className="mt-3 font-serif text-2xl text-courses-heading sm:text-3xl">{article.title}</h3>
-                  <p className="mt-3 line-clamp-4 text-sm leading-6 text-courses-body sm:text-base">{article.description}</p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-courses-link">
-                    Read article <ArrowUpRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </div>
-              </a>
-            ))}
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              {news.slice(1).map((article) => (
+          <div className="news-scroll -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-5 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+            {news.map((article, index) => {
+              const isHero = index === 0;
+              return (
                 <a
                   key={article.title}
                   href={article.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="course-card group overflow-hidden rounded-[1.25rem] bg-courses-card shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className={`course-card group flex shrink-0 snap-start flex-col overflow-hidden rounded-[1.25rem] bg-courses-card shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl ${isHero ? "w-[min(85vw,24rem)] sm:w-[24rem]" : "w-[min(78vw,18rem)] sm:w-[18.5rem]"}`}
                 >
-                  <img
-                    src={article.image}
-                    alt={article.alt}
-                    className="aspect-[4/2.3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    width={1000}
-                    height={750}
-                    sizes="(min-width: 640px) 22vw, 100vw"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="flex flex-col p-5 sm:p-6">
+                  <div className={`w-full bg-about-canvas ${isHero ? "aspect-[4/5]" : "aspect-square"}`}>
+                    <img
+                      src={article.image}
+                      alt={article.alt}
+                      className="size-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                      width={1000}
+                      height={750}
+                      sizes={isHero ? "(min-width: 640px) 384px, 85vw" : "(min-width: 640px) 296px, 78vw"}
+                      loading={isHero ? "eager" : "lazy"}
+                      decoding="async"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-courses-accent">{article.source}</p>
-                    <h3 className="mt-2 font-serif text-xl text-courses-heading">{article.title}</h3>
-                    <p className="mt-2 line-clamp-3 text-sm leading-6 text-courses-body">{article.description}</p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-courses-link">
+                    <h3 className={`mt-2 font-serif text-courses-heading ${isHero ? "text-2xl" : "text-xl"}`}>{article.title}</h3>
+                    <p className={`mt-2 text-sm leading-6 text-courses-body ${isHero ? "line-clamp-4" : "line-clamp-3"}`}>{article.description}</p>
+                    <span className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-semibold text-courses-link">
                       Read article <ArrowUpRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </div>
                 </a>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
