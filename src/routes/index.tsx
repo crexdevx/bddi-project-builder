@@ -334,22 +334,24 @@ export function Index() {
               <Link
                 key={course.title}
                 to="/programs"
-                className="course-card group w-[min(78vw,18rem)] shrink-0 snap-start overflow-hidden rounded-[1.25rem] bg-courses-card shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-[18.5rem]"
+                className="course-card group flex w-[min(78vw,18rem)] shrink-0 snap-start flex-col overflow-hidden rounded-[1.25rem] bg-courses-card shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-[18.5rem]"
               >
-                <img
-                  src={course.image}
-                  alt={course.alt}
-                  className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  width={1200}
-                  height={1200}
-                  sizes="(min-width: 640px) 296px, 78vw"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="p-5">
+                <div className="aspect-square w-full bg-about-canvas">
+                  <img
+                    src={course.image}
+                    alt={course.alt}
+                    className="size-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                    width={1200}
+                    height={1200}
+                    sizes="(min-width: 640px) 296px, 78vw"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-5">
                   <h3 className="font-serif text-xl text-courses-heading">{course.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-courses-body">{course.description}</p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-courses-link">
+                  <p className="mt-2 line-clamp-3 text-sm leading-6 text-courses-body">{course.description}</p>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-semibold text-courses-link">
                     View course <ArrowUpRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
@@ -358,10 +360,10 @@ export function Index() {
 
             <Link
               to="/programs"
-              className="course-card group flex w-[min(78vw,18rem)] shrink-0 snap-start flex-col items-center justify-center gap-4 rounded-[1.25rem] bg-courses-card p-8 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-[18.5rem]"
+              className="course-card explore-more-card group relative flex w-[min(78vw,18rem)] shrink-0 snap-start flex-col items-center justify-center gap-4 overflow-hidden rounded-[1.25rem] border-2 border-dashed border-courses-accent/40 bg-courses-card p-8 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-courses-accent hover:shadow-xl sm:w-[18.5rem]"
             >
-              <span className="flex size-16 items-center justify-center rounded-full bg-about-arrow text-about-on-navy transition-transform duration-300 group-hover:translate-x-1">
-                <ArrowUpRight aria-hidden="true" className="size-8" />
+              <span className="flex size-16 items-center justify-center rounded-full bg-courses-accent/10 text-courses-accent transition-transform duration-300 group-hover:scale-110">
+                <ArrowUpRight aria-hidden="true" className="size-8 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
               <span className="font-serif text-2xl text-courses-heading">Explore more</span>
               <span className="text-sm leading-6 text-courses-body">
